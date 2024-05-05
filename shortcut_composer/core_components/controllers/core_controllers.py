@@ -68,7 +68,7 @@ class ActionController(Controller[Action]):
         icon = value.icon
         if not icon.isNull():
             return value.icon
-        return LabelText(value.name[:3])
+        return LabelText(value.name)
 
     def get_pretty_name(self, value: Action) -> str:
         """Forward enums' pretty name."""
