@@ -36,6 +36,13 @@ def create_actions() -> list[templates.RawInstructions]: return [
         high_value=Tool.MOVE,
     ),
 
+    templates.TemporaryKey(
+        name="Temporary test activate deactivate",
+        controller=controllers.ToolController(),
+        low_value=Tool.MIP_TEST_ACTION,
+        high_value=Tool.MIP_TEST_ACTION2,
+    ),
+
     # Switch the eraser toggle ON and OFF
     # Set tool to FREEHAND BRUSH if current tool does not allow to paint
     # Ensure the preserve alpha is OFF
@@ -209,6 +216,25 @@ def create_actions() -> list[templates.RawInstructions]: return [
         background_color=QColor(95, 65, 65, 190),
         active_color=QColor(200, 70, 70),
     ),
+
+
+    templates.PieMenu(
+        name="Set MIP Context",
+        controller=controllers.ActionController(),
+        values=[
+            Action.C1MIP_SET_CONTEXT1,
+            Action.C2MIP_SET_CONTEXT2,
+            Action.C3MIP_SET_CONTEXT3,
+            Action.C4MIP_SET_CONTEXT4,
+            Action.C5MIP_SET_CONTEXT5,
+            Action.C6MIP_SET_CONTEXT6,
+            Action.C7MIP_SET_CONTEXT7,
+            Action.C8MIP_SET_CONTEXT8,
+        ],
+        background_color=QColor(95, 95, 65, 190),
+        active_color=QColor(200, 180, 70),
+    ),
+
 
     # Use pie menu to pick one of the actions
     templates.PieMenu(

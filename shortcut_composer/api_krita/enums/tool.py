@@ -57,6 +57,10 @@ class Tool(EnumGroup):
     ZOOM = "ZoomTool"
     PAN = "PanTool"
 
+    _my_actions = Group("My Actions")
+    MIP_TEST_ACTION = "mip_test_action"
+    MIP_TEST_ACTION2 = "mip_test_action2"
+
     @property
     def pretty_name(self) -> str:
         """Format tool name as in Krita Blending Mode combobox."""

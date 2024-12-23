@@ -553,6 +553,19 @@ class Action(EnumGroup):
     CUT_COLUMNS = "cut_columns_to_clipboard"
     PASTE_COLUMNS = "paste_columns_from_clipboard"
 
+    # the left side of the variable name will be shown in the UI
+    _my_actions = Group("My Actions")
+    MIP_TEST_ACTION = "mip_test_action"
+    MIP_TEST_ACTION2 = "mip_test_action2"
+    C1MIP_SET_CONTEXT1 = "mip_set_context_1"
+    C2MIP_SET_CONTEXT2 = "mip_set_context_2"
+    C3MIP_SET_CONTEXT3 = "mip_set_context_3"
+    C4MIP_SET_CONTEXT4 = "mip_set_context_4"
+    C5MIP_SET_CONTEXT5 = "mip_set_context_5"
+    C6MIP_SET_CONTEXT6 = "mip_set_context_6"
+    C7MIP_SET_CONTEXT7 = "mip_set_context_7"
+    C8MIP_SET_CONTEXT8 = "mip_set_context_8"
+
     def activate(self) -> None:
         """Activate the action."""
         try:

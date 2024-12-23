@@ -14,6 +14,12 @@
         <icon>krita_tool_move</icon>
         </Action>
 
+        <Action name="Temporary test activate deactivate">
+        <activationFlags>1</activationFlags>
+        <icon></icon>
+        </Action>
+
+
         <Action name="Temporary eraser">
         <activationFlags>1</activationFlags>
         <icon>draw-eraser</icon>
@@ -94,6 +100,12 @@
         <activationFlags>1</activationFlags>
         <icon>palette-edit</icon>
         </Action>
+
+        <Action name="Set MIP Context">
+        <activationFlags>1</activationFlags>
+        <icon></icon>
+        </Action>
+
 
         <Action name="Activate krita action (green)">
         <activationFlags>1</activationFlags>
