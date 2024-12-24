@@ -22,6 +22,7 @@ from .wrappers import (
     Cursor,
     View)
 
+import krita as raw_krita
 
 class KritaInstance:
     """Wraps krita API for typing, documentation and PEP8 compatibility."""
@@ -175,3 +176,24 @@ class KritaWindow(Protocol):
         description: str,
         menu: str, /
     ) -> QWidgetAction: ...
+
+
+# for debugging
+def debug_message(message:str, timeout:int=3000, priority:int=1):
+    """Shows a message in top left corner.
+    message: string
+    timeout: integer in millisecond
+    priority: 0:high, 1:medium, 2:low
+    """
+    document = raw_krita.Krita.instance().activeDocument()
+    if not document:
+        return  # No document open, do nothing
+
+    view = Application.activeWindow().activeView()
+    if not view:
+        return # No view available
+
+    # Show the floating message
+    view.showFloatingMessage(message, QIcon(), timeout, priority) # empty icon must be passed
+
+    return

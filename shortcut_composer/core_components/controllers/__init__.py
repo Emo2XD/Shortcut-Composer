@@ -30,6 +30,7 @@ from .core_controllers import (
     ToggleController,
     ActionController,
     ToolController,
+    ToolSaveLastController,
     UndoController)
 
 __all__ = [
@@ -50,5 +51,6 @@ __all__ = [
     "ActionController",
     "TimeController",
     "ToolController",
+    "ToolSaveLastController",
     "UndoController",
     "FlowController"]

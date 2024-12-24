@@ -12,9 +12,9 @@ Other api elements that require importing from other packages are
 available here so that the imports to omit unresolved warnings there.
 """
 
-from .core_api import KritaInstance
+from .core_api import KritaInstance, debug_message
 
 Krita = KritaInstance()
 """Wraps krita API for typing, documentation and PEP8 compatibility."""
 
-__all__ = ["Krita"]
+__all__ = ["Krita", "debug_message"]

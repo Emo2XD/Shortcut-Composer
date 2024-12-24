@@ -108,3 +108,53 @@ class TemporaryKey(RawInstructions, Generic[T]):
             raise ValueError(
                 f"{self._controller} can't be used with TemporaryKeys.")
         return value if value is not None else default
+
+
+class TemporaryTool(RawInstructions, Generic[T]):
+    """Temporary Activate Tool and go back to last selected tool.
+    """
+
+    def __init__(
+        self, *,
+        name: str,
+        controller: Controller[T],
+        high_value: T,
+        instructions: list[Instruction] | None = None,
+        short_vs_long_press_time: float | None = None
+    ) -> None:
+        super().__init__(name, instructions, short_vs_long_press_time)
+        self._controller = controller
+        self._high_value = high_value
+        self._was_high_before_press = False
+
+    def _set_low(self) -> None:
+        """Switch to low state."""
+        self._controller.set_value(self._controller.DEFAULT_VALUE)
+
+    def _set_high(self) -> None:
+        """Switch to high state."""
+        self._controller.set_value(self._high_value)
+
+    def _is_high_state(self) -> bool:
+        """Defines how to determine that current state is high."""
+        return self._controller.get_value() == self._high_value
+
+    def on_key_press(self) -> None:
+        """Set high state only if state before press was low."""
+        self._controller.refresh()
+        super().on_key_press()
+        self._was_high_before_press = self._is_high_state()
+        if not self._was_high_before_press:
+            self._set_high()
+
+    def on_short_key_release(self) -> None:
+        """Set low state only when going from high state."""
+        super().on_short_key_release()
+        if self._was_high_before_press:
+            self._set_low()
+
+    def on_long_key_release(self) -> None:
+        """End of long press ensures low state."""
+        super().on_long_key_release()
+        self._set_low()
+

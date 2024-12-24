@@ -14,6 +14,16 @@
         <icon>krita_tool_move</icon>
         </Action>
 
+        <Action name="Temporary freehand tool">
+        <activationFlags>1</activationFlags>
+        <icon>tool_outline_selection</icon>
+        </Action>
+
+        <Action name="Temporary fill tool">
+        <activationFlags>1</activationFlags>
+        <icon>tool_outline_selection</icon>
+        </Action>
+
         <Action name="Temporary test activate deactivate">
         <activationFlags>1</activationFlags>
         <icon></icon>

@@ -43,6 +43,28 @@ class ToolController(Controller[Tool]):
         return value.pretty_name
 
 
+class ToolSaveLastController(ToolController):
+    """
+    Same with the Tool Controller but It stores Last selected tool
+    """
+    DEFAULT_VALUE: Tool = Tool.FREEHAND_BRUSH # default
+
+    @staticmethod
+    def get_value() -> Tool:
+        """Get currently active tool."""
+        return Krita.active_tool
+
+    @classmethod
+    def set_value(cls, value: Tool) -> None:
+        """Set a passed tool."""
+        cls.DEFAULT_VALUE = Krita.active_tool
+        Krita.active_tool = value
+
+    # def set_low_Value(cls) -> None:
+    #     """set last selected value"""
+    #     Krita.active_tool = cls.DEFAULT_VALUE
+
+
 class ActionController(Controller[Action]):
     """
     Gives access to krita actions.

@@ -23,7 +23,7 @@ from .multiple_assignment import MultipleAssignment
 from .rotation_selector import RotationSelector
 from .raw_instructions import RawInstructions
 from .cursor_tracker import CursorTracker
-from .temporary_key import TemporaryKey
+from .temporary_key import TemporaryKey, TemporaryTool
 from .pie_menu import PieMenu
 
 
@@ -33,4 +33,5 @@ __all__ = [
     'CursorTracker',
     'RotationSelector',
     'TemporaryKey',
+    'TemporaryTool',
     'PieMenu']

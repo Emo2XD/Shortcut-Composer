@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from PyQt5.QtGui import QPixmap, QImage
-from api_krita import Krita
+from api_krita import Krita, debug_message
 from api_krita.enums import BlendingMode
 from composer_utils.label import LabelText, LabelTextColorizer
 from ..controller_base import Controller, NumericController
@@ -35,6 +35,7 @@ class PresetController(ViewBasedController, Controller[str]):
     def set_value(self, value: str) -> None:
         """Set a preset of passed name."""
         self.view.brush_preset = value
+        debug_message(f"view controller set_value: {value}")
 
     def get_label(self, value: str) -> QPixmap | None:
         """Return the preset icon or None, when there preset name unknown."""

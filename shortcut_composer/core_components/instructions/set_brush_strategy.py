@@ -43,3 +43,35 @@ class SetBrushOnNonPaintable(Instruction):
     def on_key_press(self) -> None:
         if not Tool.is_paintable(Krita.active_tool):
             Krita.trigger_action(Tool.FREEHAND_BRUSH.value)
+
+
+
+class SetBrushOnNonPaintableSaveLast(Instruction):
+    """
+    Switches current tool to `Tool.FREEHAND_BRUSH` on key press if
+    current tool does not allow to paint.
+
+    Tools that do allow to paint:
+    - `Tool.FREEHAND_BRUSH`,
+    - `Tool.LINE`,
+    - `Tool.ELLIPSE`,
+    - `Tool.DYNAMIC_BRUSH`,
+    - `Tool.RECTANGLE`,
+    - `Tool.MULTI_BRUSH`,
+    - `Tool.POLYLINE`,
+
+    ### Usage example:
+    ```python
+    instructions.SetBrushOnNonPaintable()
+    ```
+    """
+    LAST_TOOL = Tool.FREEHAND_BRUSH
+
+    def on_key_press(self) -> None:
+        SetBrushOnNonPaintableSaveLast.LAST_TOOL = Krita.active_tool
+        if not Tool.is_paintable(Krita.active_tool):
+            Krita.trigger_action(Tool.FREEHAND_BRUSH.value)
+
+
+    def on_every_key_release(self) -> None:
+        Krita.trigger_action(SetBrushOnNonPaintableSaveLast.LAST_TOOL.value)

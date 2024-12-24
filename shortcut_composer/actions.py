@@ -36,11 +36,22 @@ def create_actions() -> list[templates.RawInstructions]: return [
         high_value=Tool.MOVE,
     ),
 
+    templates.TemporaryTool(
+        name="Temporary freehand tool",
+        controller=controllers.ToolSaveLastController(),
+        high_value=Tool.FREEHAND_SELECTION
+    ),
+    templates.TemporaryTool(
+        name="Temporary fill tool",
+        controller=controllers.ToolSaveLastController(),
+        high_value=Tool.FILL
+    ),
+
     templates.TemporaryKey(
         name="Temporary test activate deactivate",
         controller=controllers.ToolController(),
-        low_value=Tool.MIP_TEST_ACTION,
-        high_value=Tool.MIP_TEST_ACTION2,
+        low_value=Tool.MIP_TEST_ACTION2, # on release (default)
+        high_value=Tool.MIP_TEST_ACTION, # on press (teporal)
     ),
 
     # Switch the eraser toggle ON and OFF
@@ -51,7 +62,8 @@ def create_actions() -> list[templates.RawInstructions]: return [
         controller=controllers.ToggleController(Toggle.ERASER),
         high_value=True,
         instructions=[
-            instructions.SetBrushOnNonPaintable(),
+            # instructions.SetBrushOnNonPaintable(),
+            instructions.SetBrushOnNonPaintableSaveLast(),
             instructions.EnsureOff(Toggle.PRESERVE_ALPHA),
         ],
     ),
