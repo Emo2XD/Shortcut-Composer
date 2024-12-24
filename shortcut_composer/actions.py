@@ -47,6 +47,16 @@ def create_actions() -> list[templates.RawInstructions]: return [
         high_value=Tool.FILL
     ),
 
+
+    templates.TemporaryTool(
+        name="Temporary instant fill tool",
+        controller=controllers.ToolSaveLastController(),
+        high_value=Tool.FREEHAND_SELECTION,
+        instructions=[
+            instructions.FillOnRelease()
+        ]
+    ),
+
     templates.TemporaryKey(
         name="Temporary test activate deactivate",
         controller=controllers.ToolController(),

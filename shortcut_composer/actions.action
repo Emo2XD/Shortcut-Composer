@@ -24,6 +24,11 @@
         <icon>tool_outline_selection</icon>
         </Action>
 
+        <Action name="Temporary instant fill tool">
+        <activationFlags>1</activationFlags>
+        <icon>tool_outline_selection</icon>
+        </Action>
+
         <Action name="Temporary test activate deactivate">
         <activationFlags>1</activationFlags>
         <icon></icon>

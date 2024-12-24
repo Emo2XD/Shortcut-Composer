@@ -16,6 +16,7 @@ from .togglers import (
     TemporaryOn,
     EnsureOff,
     EnsureOn)
+from .freehand_fill import FillOnRelease
 
 __all__ = [
     'SetBrushOnNonPaintable',
@@ -27,4 +28,6 @@ __all__ = [
     'UndoOnPress',
     'EnsureOff',
     'EnsureOn',
-    'SetBrush']
+    'SetBrush',
+    'FillOnRelease'
+    ]
