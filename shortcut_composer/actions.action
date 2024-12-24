@@ -21,7 +21,7 @@
 
         <Action name="Temporary fill tool">
         <activationFlags>1</activationFlags>
-        <icon>tool_outline_selection</icon>
+        <icon>krita_tool_color_fill</icon>
         </Action>
 
         <Action name="Temporary instant fill tool">
