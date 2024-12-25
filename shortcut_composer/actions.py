@@ -38,19 +38,20 @@ def create_actions() -> list[templates.RawInstructions]: return [
 
     templates.TemporaryTool(
         name="Temporary freehand tool",
-        controller=controllers.ToolSaveLastController(),
+        controller=controllers.ToolController(),
         high_value=Tool.FREEHAND_SELECTION
     ),
     templates.TemporaryTool(
         name="Temporary fill tool",
-        controller=controllers.ToolSaveLastController(),
+        controller=controllers.ToolController(),
         high_value=Tool.FILL
     ),
 
 
     templates.TemporaryTool(
         name="Temporary instant fill tool",
-        controller=controllers.ToolSaveLastController(),
+        # controller=controllers.ToolSaveLastController(),
+        controller=controllers.ToolController(),
         high_value=Tool.FREEHAND_SELECTION,
         instructions=[
             instructions.FillOnRelease()

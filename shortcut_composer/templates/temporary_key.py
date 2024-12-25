@@ -5,6 +5,8 @@ from typing import TypeVar, Generic
 
 from core_components import Controller, Instruction
 from .raw_instructions import RawInstructions
+from api_krita import Krita
+from api_krita.enums.tool import Tool
 
 T = TypeVar('T')
 
@@ -113,6 +115,7 @@ class TemporaryKey(RawInstructions, Generic[T]):
 class TemporaryTool(RawInstructions, Generic[T]):
     """Temporary Activate Tool and go back to last selected tool.
     """
+    LAST_TOOL = Tool.FREEHAND_BRUSH
 
     def __init__(
         self, *,
@@ -129,10 +132,11 @@ class TemporaryTool(RawInstructions, Generic[T]):
 
     def _set_low(self) -> None:
         """Switch to low state."""
-        self._controller.set_value(self._controller.DEFAULT_VALUE)
+        self._controller.set_value(TemporaryTool.LAST_TOOL)
 
     def _set_high(self) -> None:
         """Switch to high state."""
+        TemporaryTool.LAST_TOOL = Krita.active_tool
         self._controller.set_value(self._high_value)
 
     def _is_high_state(self) -> bool:
@@ -142,19 +146,22 @@ class TemporaryTool(RawInstructions, Generic[T]):
     def on_key_press(self) -> None:
         """Set high state only if state before press was low."""
         self._controller.refresh()
-        super().on_key_press()
-        self._was_high_before_press = self._is_high_state()
-        if not self._was_high_before_press:
-            self._set_high()
+        # super().on_key_press()
+        # self._was_high_before_press = self._is_high_state()
+        # if not self._was_high_before_press:
+        self._set_high()
 
-    def on_short_key_release(self) -> None:
-        """Set low state only when going from high state."""
-        super().on_short_key_release()
-        if self._was_high_before_press:
-            self._set_low()
+    # def on_short_key_release(self) -> None:
+    #     """Set low state only when going from high state."""
+    #     super().on_short_key_release()
+    #     if self._was_high_before_press:
+    #         self._set_low()
 
-    def on_long_key_release(self) -> None:
-        """End of long press ensures low state."""
-        super().on_long_key_release()
+    # def on_long_key_release(self) -> None:
+    #     """End of long press ensures low state."""
+    #     super().on_long_key_release()
+    #     self._set_low()
+    def on_every_key_release(self) -> None:
+        super().on_every_key_release()
         self._set_low()
-
+        
