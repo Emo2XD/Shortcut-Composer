@@ -35,7 +35,6 @@ class PresetController(ViewBasedController, Controller[str]):
     def set_value(self, value: str) -> None:
         """Set a preset of passed name."""
         self.view.brush_preset = value
-        debug_message(f"view controller set_value: {value}")
 
     def get_label(self, value: str) -> QPixmap | None:
         """Return the preset icon or None, when there preset name unknown."""
