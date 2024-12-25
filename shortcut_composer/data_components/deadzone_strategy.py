@@ -16,6 +16,7 @@ class PieDeadzoneStrategy(Enum):
     """Label on the top is activated."""
     PICK_PREVIOUS = "Pick previous"
     """Previously selected label is activated."""
+    PICK_PREVIOUS_FALLBACK_TOP = "Pick previous but fallback to top"
 
 
 class RotationDeadzoneStrategy(Enum):

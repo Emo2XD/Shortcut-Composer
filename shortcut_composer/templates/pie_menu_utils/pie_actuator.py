@@ -64,6 +64,12 @@ class PieActuator:
             if self._last_label in self._labels:
                 return self._last_label
             return None
+        elif self._current_strategy == PieDeadzoneStrategy.PICK_PREVIOUS_FALLBACK_TOP:
+            if self._last_label in self._labels:
+                return self._last_label
+            elif self._labels:
+                return self._labels[0]
+            return None
 
     def mark_selected_widget(self, widget_holder: WidgetHolder) -> None:
         """Force color of the label that is selected for being picked."""
