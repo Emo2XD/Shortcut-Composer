@@ -40,6 +40,11 @@
         <icon>draw-eraser</icon>
         </Action>
 
+        <Action name="Temporary background color">
+        <activationFlags>1</activationFlags>
+        <icon></icon>
+        </Action>
+
         <Action name="Temporary preserve alpha">
         <activationFlags>1</activationFlags>
         <icon>bar-transparency-unlocked</icon>

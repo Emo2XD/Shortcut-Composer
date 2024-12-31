@@ -16,7 +16,7 @@ from .togglers import (
     TemporaryOn,
     EnsureOff,
     EnsureOn)
-from .freehand_fill import FillOnRelease
+from .my_instructions import FillOnRelease, ToggleFGBGColor
 
 __all__ = [
     'SetBrushOnNonPaintable',
@@ -30,5 +30,6 @@ __all__ = [
     'EnsureOff',
     'EnsureOn',
     'SetBrush',
-    'FillOnRelease'
+    'FillOnRelease',
+    'ToggleFGBGColor'
     ]

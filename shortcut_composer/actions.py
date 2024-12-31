@@ -79,6 +79,14 @@ def create_actions() -> list[templates.RawInstructions]: return [
         ],
     ),
 
+    templates.RawInstructions(
+        name="Temporary background color",
+        instructions=[
+            # instructions.SetBrushOnNonPaintableSaveLast(),
+            instructions.ToggleFGBGColor(),
+        ],
+    ),
+
     # Switch the preserve alpha toggle ON and OFF
     # Set tool to FREEHAND BRUSH if current tool does not allow to paint
     # Ensure the eraser toggle is OFF
