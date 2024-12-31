@@ -9,7 +9,7 @@ press, release, or in a loop while the key is pressed.
 """
 
 from .layer_hide import ToggleLayerVisibility, ToggleVisibilityAbove
-from .set_brush_strategy import SetBrush, SetBrushOnNonPaintable, SetBrushOnNonPaintableSaveLast
+from .set_brush_strategy import SetBrush, SetBrushOnNonPaintable, SetBrushOnNonPaintableSaveLast, SetBrushAlways
 from .undo import UndoOnPress
 from .togglers import (
     TemporaryOff,
@@ -21,6 +21,7 @@ from .freehand_fill import FillOnRelease
 __all__ = [
     'SetBrushOnNonPaintable',
     'SetBrushOnNonPaintableSaveLast',
+    'SetBrushAlways',
     'ToggleLayerVisibility',
     'ToggleVisibilityAbove',
     'TemporaryOff',

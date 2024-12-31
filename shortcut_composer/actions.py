@@ -357,7 +357,8 @@ def create_actions() -> list[templates.RawInstructions]: return [
     templates.PieMenu(
         name="Pick brush presets (green)",
         controller=controllers.PresetController(),
-        instructions=[instructions.SetBrushOnNonPaintable()],
+        # instructions=[instructions.SetBrushOnNonPaintable()],
+        instructions=[instructions.SetBrushAlways()],
         deadzone_strategy=PieDeadzoneStrategy.PICK_PREVIOUS_FALLBACK_TOP,
         values=Tag("RGBA"),
         background_color=QColor(65, 95, 65, 190),
@@ -369,7 +370,8 @@ def create_actions() -> list[templates.RawInstructions]: return [
     templates.PieMenu(
         name="Pick brush presets (blue)",
         controller=controllers.PresetController(),
-        instructions=[instructions.SetBrushOnNonPaintable()],
+        # instructions=[instructions.SetBrushOnNonPaintable()],
+        instructions=[instructions.SetBrushAlways()],
         deadzone_strategy=PieDeadzoneStrategy.PICK_PREVIOUS_FALLBACK_TOP,
         values=Tag("Erasers"),
         background_color=QColor(70, 70, 105, 190),

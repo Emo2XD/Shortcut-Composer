@@ -46,6 +46,15 @@ class SetBrushOnNonPaintable(Instruction):
 
 
 
+class SetBrushAlways(Instruction):
+    """Always Activate Freehand Brush
+    """
+
+    def on_key_press(self) -> None:
+        Krita.trigger_action(Tool.FREEHAND_BRUSH.value)
+
+
+
 class SetBrushOnNonPaintableSaveLast(Instruction):
     """
     Switches current tool to `Tool.FREEHAND_BRUSH` on key press if
