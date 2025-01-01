@@ -162,6 +162,11 @@
         <icon>config-popup-palette</icon>
         </Action>
 
+        <Action name="Pick brush presets (blur tool)">
+        <activationFlags>1</activationFlags>
+        <icon>config-popup-palette</icon>
+        </Action>
+
         <Action name="Pick local brush presets">
         <activationFlags>1</activationFlags>
         <icon>config-popup-palette</icon>

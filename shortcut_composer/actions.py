@@ -386,6 +386,17 @@ def create_actions() -> list[templates.RawInstructions]: return [
         active_color=QColor(110, 160, 235),
     ),
 
+
+    templates.PieMenu(
+        name="Pick brush presets (blur tool)",
+        controller=controllers.PresetController(),
+        instructions=[instructions.SetBrushAlways()],
+        deadzone_strategy=PieDeadzoneStrategy.PICK_PREVIOUS_FALLBACK_TOP,
+        values=[],
+        background_color=QColor(70, 70, 70, 190),
+        active_color=QColor(110, 160, 235),
+    ),
+
     # Use pie menu to pick one of stored presets.
     # By default, preset names are stored in .kra document.
     # Set tool to FREEHAND BRUSH if current tool does not allow to paint
