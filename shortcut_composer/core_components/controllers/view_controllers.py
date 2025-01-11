@@ -48,8 +48,16 @@ class PresetController(ViewBasedController, Controller[str]):
 class PresetControllerGlobalBlendingMode(PresetController):
     def set_value(self, value: str) -> None:
         super().set_value(value)
-        Krita.get_active_view().blending_mode = BlendingModeStoreGlobalController.global_blending_mode
+        self.view.blending_mode = BlendingModeStoreGlobalController.global_blending_mode
         return 
+    
+class PresetControllerEraser(PresetController):
+    """Ensure Eraser"""
+    def set_value(self, value: str) -> None:
+        super().set_value(value)
+        self.view.blending_mode = BlendingMode.ERASE
+        return 
+
 
 
 class BrushSizeController(ViewBasedController, NumericController):

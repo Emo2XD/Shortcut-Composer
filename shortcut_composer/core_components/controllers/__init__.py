@@ -19,6 +19,7 @@ from .view_controllers import (
     OpacityController,
     PresetController,
     PresetControllerGlobalBlendingMode,
+    PresetControllerEraser,
     FlowController)
 
 from .node_controllers import (
@@ -52,6 +53,7 @@ __all__ = [
     "ToggleController",
     "PresetController",
     "PresetControllerGlobalBlendingMode",
+    "PresetControllerEraser",
     "ActionController",
     "TimeController",
     "ToolController",

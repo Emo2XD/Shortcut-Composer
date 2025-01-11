@@ -321,7 +321,7 @@ def create_actions() -> list[templates.RawInstructions]: return [
         controller=controllers.BlendingModeStoreGlobalController(),
         instructions=[
             ],
-        deadzone_strategy=PieDeadzoneStrategy.PICK_TOP,
+        deadzone_strategy=PieDeadzoneStrategy.DO_NOTHING,
         values=[
             BlendingMode.NORMAL,
             BlendingMode.COLOR,
@@ -395,7 +395,7 @@ def create_actions() -> list[templates.RawInstructions]: return [
     # Set tool to FREEHAND BRUSH if current tool does not allow to paint
     templates.PieMenu(
         name="Pick brush presets (erase)",
-        controller=controllers.PresetController(),
+        controller=controllers.PresetControllerEraser(),
         # instructions=[instructions.SetBrushOnNonPaintable()],
         instructions=[
             instructions.SetBrushAlways(),
