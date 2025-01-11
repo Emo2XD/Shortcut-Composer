@@ -316,6 +316,20 @@ def create_actions() -> list[templates.RawInstructions]: return [
         ],
     ),
 
+    templates.PieMenu(
+        name="Pick painting blending modes (store global)",
+        controller=controllers.BlendingModeStoreGlobalController(),
+        instructions=[
+            ],
+        deadzone_strategy=PieDeadzoneStrategy.PICK_TOP,
+        values=[
+            BlendingMode.NORMAL,
+            BlendingMode.COLOR,
+            BlendingMode.MULTIPLY,
+            BlendingMode.ADD,
+        ],
+    ),
+
     # Use pie menu to create painting layer with selected blending mode.
     templates.PieMenu(
         name="Create painting layer with blending mode",
@@ -362,11 +376,15 @@ def create_actions() -> list[templates.RawInstructions]: return [
 
     # Use pie menu to pick one of stored presets.
     # Set tool to FREEHAND BRUSH if current tool does not allow to paint
+    # Set Global Blendig Mode
     templates.PieMenu(
-        name="Pick brush presets (green)",
-        controller=controllers.PresetController(),
+        name="Pick brush presets (paint)",
+        controller = controllers.PresetControllerGlobalBlendingMode(),
+        # controller=controllers.PresetController(),
         # instructions=[instructions.SetBrushOnNonPaintable()],
-        instructions=[instructions.SetBrushAlways()],
+        instructions=[
+            instructions.SetBrushAlways(),
+                      ],
         deadzone_strategy=PieDeadzoneStrategy.PICK_PREVIOUS_FALLBACK_TOP,
         values=Tag("RGBA"),
         background_color=QColor(65, 95, 65, 190),
@@ -376,10 +394,13 @@ def create_actions() -> list[templates.RawInstructions]: return [
     # Use pie menu to pick one of stored presets.
     # Set tool to FREEHAND BRUSH if current tool does not allow to paint
     templates.PieMenu(
-        name="Pick brush presets (blue)",
+        name="Pick brush presets (erase)",
         controller=controllers.PresetController(),
         # instructions=[instructions.SetBrushOnNonPaintable()],
-        instructions=[instructions.SetBrushAlways()],
+        instructions=[
+            instructions.SetBrushAlways(),
+            # instructions.EnsureEraseBlendingMode(), 
+                      ],
         deadzone_strategy=PieDeadzoneStrategy.PICK_PREVIOUS_FALLBACK_TOP,
         values=Tag("Erasers"),
         background_color=QColor(70, 70, 105, 190),

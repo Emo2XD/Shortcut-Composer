@@ -14,9 +14,11 @@ from .canvas_controllers import (
 from .view_controllers import (
     BrushRotationController,
     BlendingModeController,
+    BlendingModeStoreGlobalController,
     BrushSizeController,
     OpacityController,
     PresetController,
+    PresetControllerGlobalBlendingMode,
     FlowController)
 
 from .node_controllers import (
@@ -41,6 +43,7 @@ __all__ = [
     "TransformModeController",
     "BrushRotationController",
     "BlendingModeController",
+    "BlendingModeStoreGlobalController",
     "LayerOpacityController",
     "ActiveLayerController",
     "CanvasZoomController",
@@ -48,6 +51,7 @@ __all__ = [
     "OpacityController",
     "ToggleController",
     "PresetController",
+    "PresetControllerGlobalBlendingMode",
     "ActionController",
     "TimeController",
     "ToolController",

@@ -44,6 +44,12 @@ class PresetController(ViewBasedController, Controller[str]):
             return None
         else:
             return QPixmap.fromImage(image)
+        
+class PresetControllerGlobalBlendingMode(PresetController):
+    def set_value(self, value: str) -> None:
+        super().set_value(value)
+        Krita.get_active_view().blending_mode = BlendingModeStoreGlobalController.global_blending_mode
+        return 
 
 
 class BrushSizeController(ViewBasedController, NumericController):
@@ -141,6 +147,14 @@ class BlendingModeController(ViewBasedController, Controller[BlendingMode]):
     def get_pretty_name(self, value: BlendingMode) -> str:
         """Forward enums' pretty name."""
         return value.pretty_name
+
+
+class BlendingModeStoreGlobalController(BlendingModeController):
+    global_blending_mode = BlendingMode.NORMAL
+    def set_value(self, value: BlendingMode) -> None:
+        super().set_value(value)
+        BlendingModeStoreGlobalController.global_blending_mode = value
+
 
 
 class OpacityController(ViewBasedController, NumericController):

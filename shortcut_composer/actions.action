@@ -142,6 +142,11 @@
         <icon>format-text-bold</icon>
         </Action>
 
+        <Action name="Pick painting blending modes (store global)">
+        <activationFlags>1</activationFlags>
+        <icon>format-text-bold</icon>
+        </Action>
+
         <Action name="Pick transform tool modes">
         <activationFlags>1</activationFlags>
         <icon>krita_tool_transform</icon>
@@ -152,12 +157,12 @@
         <icon>config-popup-palette</icon>
         </Action>
 
-        <Action name="Pick brush presets (green)">
+        <Action name="Pick brush presets (paint)">
         <activationFlags>1</activationFlags>
         <icon>config-popup-palette</icon>
         </Action>
 
-        <Action name="Pick brush presets (blue)">
+        <Action name="Pick brush presets (erase)">
         <activationFlags>1</activationFlags>
         <icon>config-popup-palette</icon>
         </Action>

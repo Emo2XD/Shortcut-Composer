@@ -1,6 +1,7 @@
 from api_krita import Krita
-from api_krita.enums.action import Action
+from api_krita.enums import Action, BlendingMode
 from ..instruction_base import Instruction
+from core_components.controllers import BlendingModeStoreGlobalController
 
 class FillOnRelease(Instruction):
     """
@@ -26,3 +27,13 @@ class ToggleFGBGColor(Instruction):
     def on_every_key_release(self) -> None:
         Krita.trigger_action(Action.SWAP_FOREGROUND_AND_BACKGROUND_COLOURS.value)
         ToggleFGBGColor.is_released = True
+
+
+class EnsureEraseBlendingMode(Instruction):
+    """Ensure Erase Blending mode
+    """
+    def on_every_key_release(self) -> None:
+        Krita.get_active_view().blending_mode = BlendingMode.ERASE
+    # def on_key_press(self) -> None:
+    #     Krita.get_active_view().blending_mode = BlendingModeStoreGlobalController.global_blending_mode
+        
